@@ -1,5 +1,5 @@
 # Dual-Component Deep Domain Adaptation
-- Hi everyone, this is the sample source codes for reproducing the experimental results in our paper "Dual Deep Domain Adaptation for Cross Project Software Vulnerability Detection" (PAKDD-2020) https://link.springer.com/chapter/10.1007/978-3-030-47426-3_54.
+- Hi everyone, this is the sample source codes for reproducing the experimental results in our paper "Dual-Component Deep Domain Adaptation: A New Approach for Cross Project Software Vulnerability Detection" (PAKDD-2020) https://link.springer.com/chapter/10.1007/978-3-030-47426-3_54.
 
 ## Data sets
 - We use the real-world data sets, collected by Lin et al. (https://github.com/DanielLin1986/TransferRepresentationLearning), which contain the source codes of vulnerable and non-vulnerable functions obtained from five real-world software projects, namely FFmpeg, LibTIFF, LibPNG, VLC and Pidgin. These data sets cover both multimedia and image application categories. The summary statistics of these projects are shown in Table I in our paper. In our experiment, some of the data sets from the multimedia category were used as the source domain whilst other data sets from the image category were used as the target domain (see Table II, in our paper).
