@@ -24,12 +24,11 @@ domain adaptation for vulnerable code function identification (IJCNN-2019)) on a
 - We observed that to each source code, vulnerabilities are almost only relevant to variables (i.e., local variables or parameters's variables), so that to reduce the length of the source code as well as remove unimportant code statements, we proposed to keep code statements having variables. We name this type data set "data_sets_gadget". We have two types of data sets, the first one contains all code statements in each functions to obtained "data_sets_full" and the second one contains only variable statements in each function to obtained "data_sets_gadget".
 
 ## Citation
-- If you use our sample source code and our processed data from your work, please kindly cite our paper.
+- If you use our sample source code and our processed data in your work, please kindly cite our paper.
 
-> @article{van-nguyen-dual-dan-2020,
-  title={Dual-Component Deep Domain Adaptation: A New Approach for Cross Project Software Vulnerability Detection},
-  author={Nguyen, Van and Le, Trung and De Vel, Olivier and Montague, Paul and Grundy, John and Phung, Dinh}
-  booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},
-  year={2020}
-}
+> @article{van-nguyen-dual-dan-2020,__
+  title={Dual-Component Deep Domain Adaptation: A New Approach for Cross Project Software Vulnerability Detection},__
+  author={Nguyen, Van and Le, Trung and De Vel, Olivier and Montague, Paul and Grundy, John and Phung, Dinh}__
+  booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},__
+  year={2020}}
 
