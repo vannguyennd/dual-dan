@@ -1,0 +1,2 @@
+model_checkpoint_path: "dan-bi-rnn-16"
+all_model_checkpoint_paths: "dan-bi-rnn-16"
