@@ -8,7 +8,7 @@
 ## Folder structure
 -	The folder having “data_sets” in its name contains data sets used in training and testing process for mentioned methods in our paper. For example, we use the data set from the software projects FFmpeg (used as the source domain) and LibPNG (used as the target domain).
 -	The folder having “model” in its name contains trained models for mentioned methods in our paper. For example, we save the trained models for our proposed method (dual generator-discriminator deep domain adaptation network, Dual-GD-DDAN) and the most relevant method (DDAN) proposed in [16] (i.e., Deep
-domain adaptation for vulnerable code function identification (IJCNN-2019)) on a pair of data set from the software projects FFmpeg and LibPNG.
+domain adaptation for vulnerable code function identification (IJCNN-2019) https://ieeexplore.ieee.org/document/8851923) on a pair of data set from the software projects FFmpeg and LibPNG.
 
 ## Training, validating and testing process
 -	For each model, we use the file having “train” in its name to train the model. After training the model, we can find out the best model (i.e., based on the results of AUC, Recall, Precision and F1-measure on the training set) which will be used in the testing process.
