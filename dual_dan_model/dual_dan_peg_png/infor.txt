@@ -1,1 +1,1 @@
-Please use the link https://app.box.com/s/tdz8n5o9qq6hgyz0pbaefcsp9rxnvf36 for dowloading the trained dan model.
+Please use the link https://app.box.com/s/tdz8n5o9qq6hgyz0pbaefcsp9rxnvf36 for dowloading the trained dual-dan model.
