@@ -326,7 +326,7 @@ def train_and_evaluate(training_mode, p_lr, p_d_rate, p_num_hidden, verbose=True
         if h_value != 0.0:
             high_values.append(h_value)
         print(high_values)
-        
+
         result_file.write('\ntesting results: ')
         for i_value in high_values:
             result_file.write('%f \t' % i_value)
@@ -337,7 +337,7 @@ def train_and_evaluate(training_mode, p_lr, p_d_rate, p_num_hidden, verbose=True
 print('Domain adaptation training')
 
 g_lr = [0.001]
-d_rate = [0.1, 0.01, 1.0, 0.5]
+d_rate = [ 0.01, 0.1, 1.0, 0.5]
 list_num_hidden = [128, 256]
 
 for i_g_lr in g_lr:

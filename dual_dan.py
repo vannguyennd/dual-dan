@@ -457,9 +457,9 @@ def train_and_evaluate(training_mode, an_pha, rate_d, rate_mc, rate_con,
 
 print('dual domain adaptation training')
 
-list_rate_d = [0.1, 0.01, 1.0, 0.5]
-list_rate_mc = [0.1, 0.01, 0.001]
-list_rate_con = [0.1, 0.01, 0.001]
+list_rate_d = [0.01, 0.1, 1.0, 0.5]
+list_rate_mc = [0.001, 0.1, 0.01]
+list_rate_con = [0.001, 0.1, 0.01]
 list_an_pha = [-10.0, -9.0]
 list_hidden_rnn = [128, 256]
 
