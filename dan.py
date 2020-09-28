@@ -323,11 +323,14 @@ def train_and_evaluate(training_mode, p_lr, p_d_rate, p_num_hidden, verbose=True
                         result_file.write('t_fpr: %f; t_fnr: %f; t_tpr: %f; t_p: %f; t_f_1: %f \n' % (t_fpr, t_fnr, t_tpr,
                                                                                                   t_p, t_f_1))
 
-        high_values.append(h_value)
+        if h_value != 0.0:
+            high_values.append(h_value)
         print(high_values)
+        
         result_file.write('\ntesting results: ')
         for i_value in high_values:
             result_file.write('%f \t' % i_value)
+        result_file.write('\n')
 
 
 
