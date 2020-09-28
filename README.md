@@ -26,7 +26,7 @@ domain adaptation for vulnerable code function identification (IJCNN-2019)) on a
 ## Citation
 - If you use our sample source code and our processed data from your work, please kindly cite our paper.
 
-@article{van-nguyen-dual-dan-2020,
+> @article{van-nguyen-dual-dan-2020,
   title={Dual-Component Deep Domain Adaptation: A New Approach for Cross Project Software Vulnerability Detection},
   author={Nguyen, Van and Le, Trung and De Vel, Olivier and Montague, Paul and Grundy, John and Phung, Dinh}
   booktitle={Pacific-Asia Conference on Knowledge Discovery and Data Mining},
