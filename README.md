@@ -16,7 +16,7 @@ domain adaptation for vulnerable code function identification (IJCNN-2019) https
 - In our sample source codes, for easy to use, we train the model using the training set and compute the results on the testing set after each iteration, and summary the highest results (saved in a high_values variable) on the testing set corresponding to the used sets of hyper-parameters.
 
 ## Implementation
-- We implemented all mentioned methods in Python using Tensorflow (version 1.14), an opensource software library for Machine Intelligence developed by the Google Brain Team. We ran our experiments on an Intel Xeon Processor E5-1660 which has 8 cores at 3.0 GHz and 128 GB of RAM.
+- We implemented all mentioned methods in Python using Tensorflow (version 1.14), an opensource software library for Machine Intelligence developed by the Google Brain Team, and Python 3.6. We ran our experiments on an Intel Xeon Processor E5-1660 which has 8 cores at 3.0 GHz and 128 GB of RAM.
 
 ## Additional reading about data sets
 - We use the real-world data sets, collected by "https://github.com/DanielLin1986/TransferRepresentationLearning", which contain the source code of vulnerable and non-vulnerable functions obtained from five real-world software projects, namely FFmpeg, LibTIFF, LibPNG, VLC and Pidgin. These datasets cover both multimedia and image application categories. 
