@@ -1,1 +1,24 @@
-# dual-dan
+# Dual-Component Deep Domain Adaptation
+- Hi everyone, this is the sample source codes for reproducing the experimental results in our paper "Dual Deep Domain Adaptation for Cross Project Software Vulnerability Detection" (PAKDD-2020) https://link.springer.com/chapter/10.1007/978-3-030-47426-3_54.
+
+## Data sets
+- We use the real-world data sets, collected by Lin et al. (https://github.com/DanielLin1986/TransferRepresentationLearning), which contains the source code of vulnerable and non-vulnerable functions obtained from five real-world software projects, namely FFmpeg, LibTIFF, LibPNG, VLC and Pidgin. These data sets cover both multimedia and image application categories. The summary statistics of these projects are shown in Table I in our paper. In our experiment, some of the data sets from the multimedia category were used as the source domain whilst other data sets from the image category were used as the target domain (see Table II, in our paper).
+- We split the data of the source domain into two random partitions. The first partition contains 80% for training and the second partition contains 20% for validation. We also split the data of the target domain into two random partitions containing 80% for training without using any label information and 20% for testing the model. We additionally apply gradient clipping regularization to prevent over-fitting when training the model.
+
+## Folder structure
+-	The folder having “data_sets” in its name contains data sets used in training and testing process for mentioned methods in our paper. For example, we use the data set (folder: data_sets_peg_png) from the software projects FFmpeg (used as the source domain) and LibPNG (used as the target domain).
+-	The folder having “model” in its name contains trained models for mentioned methods in our paper. For example, we save the trained models for our proposed method (dual generator-discriminator deep domain adaptation network, Dual-GD-DDAN) and the most relevant method (DDAN) proposed in [16] (i.e., Deep
+domain adaptation for vulnerable code function identification (IJCNN-2019)) on a pair of data set from the software projects FFmpeg and LibPNG.
+
+## Training, validating and testing process
+-	For each model, we use the file having “train” in its name to train the model. After training the model, we can find out the best model (i.e., based on the results of AUC, Recall, Precision and F1-measure on training test) which will be used in testing process.
+-	For each model, we use the file having “predict” in its name to test the trained model on testing set. For example, we use the trained model for Dual-GD-DDAN and the trained model for DDAN stored in the folder having “model” in its name gained after training process to obtain the result on testing set.
+- In our sample source code, we compute the results on training and testing sets after each iterations and summary the highest results in testing set from some sets of hyper-parameters and save them in a high_values variable.
+
+## Implementation
+- We implemented all mentioned methods in Python using Tensorflow (version 1.6), an opensource software library for Machine Intelligence developed by the Google Brain Team. We ran our experiments on an Intel Xeon Processor E5-1660 which has 8 cores at 3.0 GHz and 128 GB of RAM.
+
+## Additional reading about data sets
+- We use the real-world data sets collected by "https://github.com/DanielLin1986/TransferRepresentationLearning" which contains the source code of vulnerable and non-vulnerable functions obtained from five real-world software projects, namely FFmpeg, LibTIFF, LibPNG, VLC and Pidgin. These datasets cover both multimedia and image application categories. 
+- We preprocess data sets before inputting into the deep neural networks (i.e., baselines and our proposed method). Firstly, we standardize the source code by removing comments, blank lines and non-ASCII characters. Secondly, we map user-defined variables to symbolic names (e.g., “var1”, “var2”) and user-defined functions to symbolic names (e.g., “func1”, “func2”). We also replace integers, real and hexadecimal numbers with a generic <num> token and strings with a generic <str> token. We used https://joern.readthedocs.io/en/latest/ to analyze the source code to get user-defined variables and functions.
+- We observed that to each source code, vulnerabilities are almost only relevant to variables (i.e., local variables or parameters's variables), so that to reduce the length of the source code as well as remove unimportant code statements, we proposed to keep code statements having variables. We name this type data set "data_sets_gadget". We have two types of data sets, the first one contains all code statements in each functions to obtained "data_sets_full" and the second one contains only variable statements in each function to obtained "data_sets_gadget".
