@@ -13,7 +13,7 @@ domain adaptation for vulnerable code function identification (IJCNN-2019)) on a
 ## Training, validating and testing process
 -	For each model, we use the file having “train” in its name to train the model. After training the model, we can find out the best model (i.e., based on the results of AUC, Recall, Precision and F1-measure on training test) which will be used in testing process.
 -	For each model, we use the file having “predict” in its name to test the trained model on testing set. For example, we use the trained model for Dual-GD-DDAN and the trained model for DDAN stored in the folder having “model” in its name gained after training process to obtain the result on testing set.
-- In our sample source code, we compute the results on training and testing sets after each iterations and summary the highest results in testing set from some sets of hyper-parameters and save them in a high_values variable.
+- In our sample source codes, we compute the results on the training and testing sets after each iteration, and summary the highest results (saved in a high_values variable) on the testing set from corresponding to the used sets of hyper-parameters.
 
 ## Implementation
 - We implemented all mentioned methods in Python using Tensorflow (version 1.6), an opensource software library for Machine Intelligence developed by the Google Brain Team. We ran our experiments on an Intel Xeon Processor E5-1660 which has 8 cores at 3.0 GHz and 128 GB of RAM.
