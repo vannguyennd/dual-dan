@@ -6,12 +6,12 @@
 - We split the data of the source domain into two random partitions. The first partition contains 80% for training and the second partition contains 20% for validation. We also split the data of the target domain into two random partitions containing 80% for training without using any label information and 20% for testing the model. We additionally apply gradient clipping regularization to prevent over-fitting when training the model.
 
 ## Folder structure
--	The folder having “data_sets” in its name contains data sets used in training and testing process for mentioned methods in our paper. For example, we use the data set (folder: data_sets_peg_png) from the software projects FFmpeg (used as the source domain) and LibPNG (used as the target domain).
+-	The folder having “data_sets” in its name contains data sets used in training and testing process for mentioned methods in our paper. For example, we use the data set from the software projects FFmpeg (used as the source domain) and LibPNG (used as the target domain).
 -	The folder having “model” in its name contains trained models for mentioned methods in our paper. For example, we save the trained models for our proposed method (dual generator-discriminator deep domain adaptation network, Dual-GD-DDAN) and the most relevant method (DDAN) proposed in [16] (i.e., Deep
 domain adaptation for vulnerable code function identification (IJCNN-2019)) on a pair of data set from the software projects FFmpeg and LibPNG.
 
 ## Training, validating and testing process
--	For each model, we use the file having “train” in its name to train the model. After training the model, we can find out the best model (i.e., based on the results of AUC, Recall, Precision and F1-measure on training test) which will be used in testing process.
+-	For each model, we use the file having “train” in its name to train the model. After training the model, we can find out the best model (i.e., based on the results of AUC, Recall, Precision and F1-measure on the training set) which will be used in the testing process.
 -	For each model, we use the file having “predict” in its name to test the trained model on testing set. For example, we use the trained model for Dual-GD-DDAN and the trained model for DDAN stored in the folder having “model” in its name gained after training process to obtain the result on testing set.
 - In our sample source codes, we compute the results on the training and testing sets after each iteration, and summary the highest results (saved in a high_values variable) on the testing set from corresponding to the used sets of hyper-parameters.
 
