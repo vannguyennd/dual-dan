@@ -1,0 +1,1 @@
+fpr: 0.03261; fnr: 0.00000; trg_test_acc: 0.97000; trg_test_pre: 0.72727; trg_test_f1: 0.84211; trg_test_re: 1.00000; trg_test_auc: 0.98370
