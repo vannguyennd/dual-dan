@@ -6,7 +6,7 @@ from sklearn import metrics as mt
 import scipy.io as io
 
 opt_type = 'adam'
-cell_type = 'ls_tm'
+cell_type = 'lstm'
 num_layers = 1
 
 tbs = 100
@@ -48,7 +48,7 @@ class DomainModel(object):
             x_st = tf.unstack(self.X_source_target, time_steps, 1)
             # define rnn cells with tensor_flow
             # forward direction cell
-            if cell_type == 'ls_tm':
+            if cell_type == 'lstm':
                 if num_layers > 1:
                     fw_cell_st = tf.contrib.rnn.MultiRNNCell([rnn.LSTMCell(num_hidden) for _ in range(num_layers)])
                     # backward direction cell
