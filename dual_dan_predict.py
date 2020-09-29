@@ -277,9 +277,9 @@ _, _, target_test, target_test_labels = read_data(time_steps, sen_len, False)
 
 def train_and_evaluate():
     """helper to run the model with different training modes."""
-    hidden_rnn = 128
+    hidden_rnn = 128  # the size of the lstm hidden state corresponding to the best trained model
 
-    saved_dir = "./dual_dan_model/" + 'dual_dan_peg_png/'
+    saved_dir = "./dual_dan_model/" + 'dual_dan_peg_png/'  # the directory stores the best trained model obtained from running dual_dan_HG.py file
 
     model = DomainModel(hidden_rnn)
 
