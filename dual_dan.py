@@ -165,6 +165,7 @@ class DomainModel(object):
                                                                             labels=self.Y_st)
 
         with tf.name_scope('mode_collapse_source_target'):
+            # for source data
             cross_s_sm_01 = tf.expand_dims(self.features_st, 1)
             cross_s_sm_02 = tf.expand_dims(cross_s_sm_01, 1)
 
@@ -176,6 +177,7 @@ class DomainModel(object):
             exp_x_source = tf.where(tf.is_nan(niu_source), tf.ones(niu_source.shape), niu_source)
             self.mc_source = exp_x_source * distance_source
 
+            # for target data
             cross_t_sm_01 = tf.expand_dims(self.features_ts, 1)
             cross_t_sm_02 = tf.expand_dims(cross_t_sm_01, 1)
 
