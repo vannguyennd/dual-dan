@@ -6,7 +6,7 @@ from sklearn import metrics as mt
 import scipy.io as io
 
 opt_type = 'adam'
-cell_type = 'ls_tm'
+cell_type = 'lstm'
 num_layers = 1
 
 tbs = 100
@@ -48,7 +48,7 @@ class DomainModel(object):
         with tf.variable_scope(scope):
             weights_st = weight_variable([2 * self.hidden_rnn * time_steps, self.dense_output])
             biases_st = bias_variable([self.dense_output])
-            if cell_type == 'ls_tm':
+            if cell_type == 'lstm':
                 if num_layers > 1:
                     # define rnn cells with tensor_flow
                     # forward direction cell
