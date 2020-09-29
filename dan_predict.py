@@ -183,9 +183,9 @@ hour = time.strftime('%h')
 def train_and_evaluate():
     """helper to run the model with different training modes."""
 
-    p_num_hidden = 256
+    p_num_hidden = 256  # the size of the lstm hidden state corresponding to the best trained model
 
-    saved_dir = "./dan_model/" + 'dan_peg_png/'
+    saved_dir = "./dan_model/" + 'dan_peg_png/'  # the directory stores the best trained model obtained from running dan.py file
     result_file = open('./dan_model/' + 'dan_peg_png.txt', 'a+')
 
     model = DomainModel(p_num_hidden)
