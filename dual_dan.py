@@ -165,39 +165,28 @@ class DomainModel(object):
                                                                             labels=self.Y_st)
 
         with tf.name_scope('mode_collapse_source_target'):
-            cross_st_features = self.features_st
-            cross_ts_features = self.features_ts
-            mc_source = []
-            for i_lp in range(0, tbs//2, 3):
-                cross_s_sm_i = cross_st_features[i_lp]
-                cross_s_sm_j = cross_st_features[i_lp + 1]
+            cross_s_sm_01 = tf.expand_dims(self.features_st, 1)
+            cross_s_sm_02 = tf.expand_dims(cross_s_sm_01, 1)
 
-                sum_kernel = tf.reshape((cross_s_sm_i - cross_s_sm_j), [-1, 1])
-                sum_kernel_t = tf.transpose(sum_kernel)
-                distance_source = tf.matmul(sum_kernel_t, sum_kernel)
+            sum_kernel_s = cross_s_sm_01 - cross_s_sm_02
+            sum_kernel_st = cross_s_sm_01 - cross_s_sm_02
+            distance_source = tf.squeeze(tf.matmul(sum_kernel_s, sum_kernel_st, transpose_b=True))
 
-                niu_source = tf.exp((-self.sigma_kernel * distance_source))
-                exp_x_source = tf.where(tf.is_nan(niu_source), tf.ones(niu_source.shape), niu_source)
+            niu_source = tf.exp((-self.sigma_kernel * distance_source))
+            exp_x_source = tf.where(tf.is_nan(niu_source), tf.ones(niu_source.shape), niu_source)
+            self.mc_source = exp_x_source * distance_source
 
-                mc_source.append(exp_x_source * distance_source)
+            cross_t_sm_01 = tf.expand_dims(self.features_ts, 1)
+            cross_t_sm_02 = tf.expand_dims(cross_t_sm_01, 1)
 
-            self.mc_source = mc_source
+            sum_kernel_t = cross_t_sm_01 - cross_t_sm_02
+            sum_kernel_tt = cross_t_sm_01 - cross_t_sm_02
+            distance_target = tf.squeeze(tf.matmul(sum_kernel_t, sum_kernel_tt, transpose_b=True))
 
-            mc_target = []
-            for i_lp in range(0, tbs//2, 3):
-                cross_t_sm_i = cross_ts_features[i_lp]
-                cross_t_sm_j = cross_ts_features[i_lp + 1]
+            niu_target = tf.exp((-self.sigma_kernel * distance_target))
+            exp_x_target = tf.where(tf.is_nan(niu_target), tf.ones(niu_target.shape), niu_target)
 
-                sum_kernel = tf.reshape((cross_t_sm_i - cross_t_sm_j), [-1, 1])
-                sum_kernel_t = tf.transpose(sum_kernel)
-                distance_target = tf.matmul(sum_kernel_t, sum_kernel)
-
-                niu_target = tf.exp((-self.sigma_kernel * distance_target))
-                exp_x_target = tf.where(tf.is_nan(niu_target), tf.ones(niu_target.shape), niu_target)
-
-                mc_target.append(exp_x_target * distance_target)
-
-            self.mc_target = mc_target
+            self.mc_target = exp_x_target * distance_target
 
         with tf.name_scope('train_domain_source_target'):
             # flip the gradient when back-propagating through this operation
