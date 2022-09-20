@@ -278,11 +278,11 @@ target_train, target_train_labels, target_test, target_test_labels = read_data(t
 high_values = []
 
 
-def train_and_evaluate(training_mode, an_pha, rate_d, rate_mc, rate_con,
+def train_and_evaluate(training_mode, ap, rate_d, rate_mc, rate_con,
                        hidden_rnn, verbose=True):
     """helper to run the model with different training modes."""
 
-    saved_dir = "./dual_dan/" + 'model/' + str(an_pha) + '-' \
+    saved_dir = "./dual_dan/" + 'model/' + str(ap) + '-' \
                 + str(rate_d) + '-' + str(rate_mc) + '-' + str(rate_con) + '-' + str(hidden_rnn) \
                 + '/'
 
@@ -324,11 +324,11 @@ def train_and_evaluate(training_mode, an_pha, rate_d, rate_mc, rate_con,
         result_file = open('./dual_dan/' + 'model/' + str(today) + "_" + str(hour) + '_'
                            + str(num_input_vocabulary) + '_dual_dan.txt', 'a+')
 
-        print('an_pha: ' + str(an_pha)
+        print('ap: ' + str(ap)
               + '; rate_d: ' + str(rate_d) + '; rate_mc: ' + str(rate_mc) + '; rate_con: ' + str(rate_con)
               + '; hidden_rnn: ' + str(hidden_rnn))
 
-        result_file.write('an_pha: ' + str(an_pha)
+        result_file.write('ap: ' + str(ap)
                           + '; rate_d: ' + str(rate_d) + '; rate_mc: ' + str(rate_mc) 
                           + '; rate_con: ' + str(rate_con)
                           + '; hidden_rnn: ' + str(hidden_rnn)
@@ -342,7 +342,7 @@ def train_and_evaluate(training_mode, an_pha, rate_d, rate_mc, rate_con,
             ld = -1 + 2.0 / (1 + np.exp(-10.0 * p))
 
             lr = 0.001 / (1. + 10 * p) ** 0.75
-            sigma_kernel = np.power(2.0, an_pha)
+            sigma_kernel = np.power(2.0, ap)
 
             if training_mode == 'dual_dan':
 
@@ -447,17 +447,17 @@ def train_and_evaluate(training_mode, an_pha, rate_d, rate_mc, rate_con,
 
 print('dual domain adaptation training')
 
-list_rate_d = [0.01, 0.1, 0.5, 1.0]
+list_rate_d = [0.01, 0.1, 1.0]
 list_rate_mc = [0.001, 0.01, 0.1]
 list_rate_con = [0.001, 0.01, 0.1]
-list_an_pha = [-10.0, -9.0]
+list_ap = [-10.0, -9.0]
 list_hidden_rnn = [128, 256]
 
-for a_pha in list_an_pha:
+for ap in list_ap:
     for l_rnn in list_hidden_rnn:
         for r_d in list_rate_d:
             for r_mc in list_rate_mc:
                 for r_con in list_rate_con:
-                    train_and_evaluate('dual_dan', an_pha=a_pha,
+                    train_and_evaluate('dual_dan', ap=ap,
                                        rate_d=r_d, rate_mc=r_mc,
                                        rate_con=r_con, hidden_rnn=l_rnn)
